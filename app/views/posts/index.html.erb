@@ -1,0 +1,22 @@
+<h1>トップページだよ</h1>
+<%= link_to '新規投稿', '/posts/new'%>
+<% @posts.each do |post| %>
+  <div class="post">
+    <div class="post-date">
+      投稿日時：<%= post.created_at%>
+    </div>
+    <div class="post-content">
+      <%= post.content %>
+    </div>
+  </div>
+<%end%>
+
+<%# ・link_toメソッド
+リンクを作成するためのヘルパーメソッドです。HTMLのaタグの代わりに使用できます。
+ビューファイルでは、以下のように記述します。
+タグとして出力するために、<%= >で囲う必要があります。
+<%= link_to 'リンクに表示する文字', 'リンク先のURL' >
+
+今回、リクエストを送って動かしたいのは、get'posts/new', to: 'posts#new'というルーティングです。
+したがって、「GETメソッド」・「posts/new」というリクエスト情報をリンク内に埋め込みます。
+<%= link_to '新規投稿', "/posts/new", method: :GET > %>
